@@ -6,7 +6,10 @@ const ProductList = ({ onAddToCart }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/products')
+    // If backend is deployed, you should add VITE_API_URL to your netlify environment variables.
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    
+    fetch(`${apiUrl}/api/products`)
       .then(res => res.json())
       .then(data => {
         // Use local png paths instead of webp
