@@ -21,7 +21,17 @@ const ProductList = ({ onAddToCart }) => {
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error fetching products:', err);
+        console.error('Error fetching products from backend, using fallback data:', err);
+        // Fallback demo data so the site still works on the live Netlify preview
+        const fallbackData = [
+          { id: 1, name: 'Premium Saffron (1kg)', category: 'Spices', price: 250000, image: '/images/saffron.png', description: 'Highest quality Kashmiri saffron for wholesale.' },
+          { id: 2, name: 'Organic Cashews (50kg Bag)', category: 'Dry Fruits', price: 40000, image: '/images/cashews.png', description: 'Premium grade W320 cashews.' },
+          { id: 3, name: 'Almonds - Mamra (20kg)', category: 'Dry Fruits', price: 60000, image: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=500&q=80', description: 'Rich in oil Mamra almonds sourced from Iran.' },
+          { id: 4, name: 'Green Cardamom (5kg)', category: 'Spices', price: 15000, image: 'https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=500&q=80', description: 'Bold green cardamom pods (8mm+).' },
+          { id: 5, name: 'Black Pepper - Tellicherry (10kg)', category: 'Spices', price: 7000, image: 'https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=500&q=80', description: 'Large, dark, and flavorful Tellicherry peppercorns.' },
+          { id: 6, name: 'Walnuts - Chilean (25kg)', category: 'Dry Fruits', price: 32000, image: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=500&q=80', description: 'Light halves, premium grade walnuts.' }
+        ];
+        setProducts(fallbackData);
         setLoading(false);
       });
   }, []);
